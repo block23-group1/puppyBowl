@@ -25,17 +25,19 @@ const fetchAllPlayers = async () => {
     }
 };
 
-
+// get single player by id
 const fetchSinglePlayer = async (playerId) => {
     try {
-
+        const response = await fetch(`${APIURL}/${id}`)
+        const player = await response.json();
+        return player;
 
     } catch (err) {
         console.error(`Oh no, trouble fetching player #${playerId}!`, err);
     }
 };
 
-
+// adding new player object by using rest API Post
 const addNewPlayer = async (playerObj) => {
     try {
 
@@ -45,7 +47,7 @@ const addNewPlayer = async (playerObj) => {
     }
 };
 
-
+// remove player with .remove()
 const removePlayer = async (playerId) => {
     try {
 
