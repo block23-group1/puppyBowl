@@ -13,34 +13,40 @@ const APIURL = `https://fsa-puppy-bowl.herokuapp.com/api/${cohortName}/`;
  * @returns An array of objects.
  */
 const fetchAllPlayers = async () => {
-    try {
-        const response = await fetch(`${APIURL}/players`)
-        const result = await response.json();
-        //console.log(result)
-        const players = result.data.players;
-        return players
-       // return result;
-    } catch (err) {
-        console.error('Uh oh, trouble fetching players!', err);
-    }
+  try {
+    const response = await fetch(`${APIURL}/players`);
+    const result = await response.json();
+    //console.log(result)
+    const players = result.data.players;
+    return players;
+    // return result;
+  } catch (err) {
+    console.error("Uh oh, trouble fetching players!", err);
+  }
 };
 
 // get single player by id
 const fetchSinglePlayer = async (playerId) => {
-    try {
-        const response = await fetch(`${APIURL}/${id}`)
-        const player = await response.json();
-        return player;
-
-    } catch (err) {
-        console.error(`Oh no, trouble fetching player #${playerId}!`, err);
-    }
+  try {
+    const response = await fetch(`${APIURL}/${playerId}`);
+    const result = await response.json();
+    console.log(result.data.player);
+    return result.data.player;
+  } catch (err) {
+    console.error(`Oh no, trouble fetching player #${playerId}!`, err);
+  }
 };
 
 // adding new player object by using rest API Post
 const addNewPlayer = async (playerObj) => {
     try {
+        const response = await fetch(`${APIURL}/${playerObj}`, {
+          method: "POST",
+        })
 
+        const player = await response.json();
+
+        return player;
 
     } catch (err) {
         console.error('Oops, something went wrong with adding that player!', err);
@@ -50,7 +56,13 @@ const addNewPlayer = async (playerObj) => {
 // remove player with .remove()
 const removePlayer = async (playerId) => {
     try {
+      const response = await fetch(`${APIURL}/${playerId}`, {
+        method: "DELETE",
+      })
 
+      const player = await response.json();
+
+      return player;
 
     } catch (err) {
         console.error(
@@ -106,11 +118,12 @@ const renderNewPlayerForm = () => {
 
 
 const init = async () => {
-    const players = await fetchAllPlayers();
-     renderAllPlayers(players);
+
+const players = await fetchAllPlayers();
+renderAllPlayers(players);
+//fetchSinglePlayer(player[1].Id)
 
 
-    // renderNewPlayerForm();
 }
 
 
