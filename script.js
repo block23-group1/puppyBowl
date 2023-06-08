@@ -42,12 +42,12 @@ const fetchSinglePlayer = async (playerId) => {
 // think this mean creating a form, so we suppose to fill in the playerobject that is in the api 
 // if so need to create another function that create a form from "newPlayerFormContainer"
 
-const createNewPlayerForm = () => {
-  // create a formHTML variable
-  let formHTML = ``// inside should be player objects 
+// const createNewPlayerForm = () => {
+//   // create a formHTML variable
+//   let formHTML = ``// inside should be player objects 
 
-  // 
-}
+//   // 
+// }
 
 const addNewPlayer = async (playerObj) => {
     try {
@@ -114,9 +114,39 @@ const renderAllPlayers = (playerList) => {
 
         // adding html elements, and buttons
         playerElement.innerHTML = `
-    
-        `
+                      <h2>${player.name}</h2>
+                      <p>${player.breed}</p>
+                      <p>${player.status}</p>
+                      <img src="${player.imageURL}" alt="">
+                      <p>${player.time}</p>
+                      <p>${player.teamId}</p>
+                      <p>${player.cohortId}</p>
+
+                      <button class = "detail-button" data.id= "${player.playerId}">Player detail</button>
+                      <button class = "remove-button" data.id= "${player.playerId}">Remove player</button>
+
+        `;
+
+        playerContainer.appendChild(playerElement);
+
+      // single player detail
+
+      const detailButton = playerElement.querySelector(".detail-button");
+      detailButton.addEventListener("click", () => {
+        // fetch player details
+        const playerId = detailButton.getAttribute(player.playerId);
+        console.log(playerId);
+
+        const details = fetchSinglePlayer(playerId)
       })
+
+      // remove single player
+      const removeButton = playerElement.querySelector(".remove-button");
+      removeButton.addEventListener("click", () => {
+        removePlayer(player.id);
+        playerElement.remove();
+      })
+      });
 
       // after adding element, need to appends
 
@@ -134,15 +164,15 @@ const renderAllPlayers = (playerList) => {
  * It renders a form to the DOM, and when the form is submitted, it adds a new player to the database,
  * fetches all players from the database, and renders them to the DOM.
  */
-const renderNewPlayerForm = () => {
-    try {
-      // fetch detail from API
+// const renderNewPlayerForm = () => {
+//     try {
+//       // fetch detail from API
     
        
-    } catch (err) {
-        console.error('Uh oh, trouble rendering the new player form!', err);
-    }
-}
+//     } catch (err) {
+//         console.error('Uh oh, trouble rendering the new player form!', err);
+//     }
+// }
 
 
 const init = async () => {
