@@ -30,14 +30,25 @@ const fetchSinglePlayer = async (playerId) => {
   try {
     const response = await fetch(`${APIURL}/${playerId}`);
     const result = await response.json();
+    const player =  result.data.player;
     console.log(result.data.player);
-    return result.data.player;
+    return player;
   } catch (err) {
     console.error(`Oh no, trouble fetching player #${playerId}!`, err);
   }
 };
 
 // adding new player object by using rest API Post
+// think this mean creating a form, so we suppose to fill in the playerobject that is in the api 
+// if so need to create another function that create a form from "newPlayerFormContainer"
+
+const createNewPlayerForm = () => {
+  // create a formHTML variable
+  let formHTML = ``// inside should be player objects 
+
+  // 
+}
+
 const addNewPlayer = async (playerObj) => {
     try {
         const response = await fetch(`${APIURL}/${playerObj}`, {
@@ -45,8 +56,8 @@ const addNewPlayer = async (playerObj) => {
         })
 
         const player = await response.json();
-
-        return player;
+        console.log(player);
+        fetchAllPlayers()
 
     } catch (err) {
         console.error('Oops, something went wrong with adding that player!', err);
@@ -61,8 +72,8 @@ const removePlayer = async (playerId) => {
       })
 
       const player = await response.json();
-
-      return player;
+      console.log(player);
+      fetchAllPlayers();
 
     } catch (err) {
         console.error(
@@ -95,14 +106,29 @@ const removePlayer = async (playerId) => {
  */
 const renderAllPlayers = (playerList) => {
     try {
+
+      playerContainer.innerHTML = "";
+      playerList.forEach((player) => {
+        const playerElement = document.createElement("div");
+        playerElement.classList.add("result");
+
+        // adding html elements, and buttons
+        playerElement.innerHTML = `
+    
+        `
+      })
+
+      // after adding element, need to appends
+
+      // adding detail button which need to render single player
+
+      // adding the remove player button that remove single player
+
         console.log(playerList)
     } catch (err) {
         console.error('Uh oh, trouble rendering players!', err);
     }
 };
-
-
-
 
 /**
  * It renders a form to the DOM, and when the form is submitted, it adds a new player to the database,
@@ -110,6 +136,8 @@ const renderAllPlayers = (playerList) => {
  */
 const renderNewPlayerForm = () => {
     try {
+      // fetch detail from API
+    
        
     } catch (err) {
         console.error('Uh oh, trouble rendering the new player form!', err);
