@@ -92,22 +92,39 @@ const removePlayer = async (playerId) => {
  * @returns the playerContainerHTML variable.
  */
 
-const detailBtn = document.getElementById("detailBtn");
-const removeBtn = document.getElementById("removeBtn");
-
-detailBtn.addEventListener("click", (e) => {
-  const player = fetchSinglePlayer(e.target.id);
-  console.log(`Got ${player}'s info...`);
-});
-
-removeBtn.addEventListener("click", (e) => {
-  removePlayer(e.target.id);
-  console.log(`Removed ${e.target}`);
-});
-
 const renderAllPlayers = (playerList) => {
   try {
-    console.log(playerList);
+    playerList.forEach((player) => {
+      const playerElement = document.createElement("div");
+      playerElement.classList.add("result");
+
+      // adding html elements, and buttons
+      playerElement.innerHTML = `
+                      <h2>${player.name}</h2>
+                      <p>${player.breed}</p>
+                      <p>${player.status}</p>
+                      <img src="${player.imageURL}" alt="">
+                      <p>${player.cohortId}</p>
+
+                      <button class="detailBtn" data-id="${player.id}">Player detail</button>
+                      <button class="removeBtn" data-id="${player.playerId}">Remove player</button>
+
+        `;
+
+      playerContainer.appendChild(playerElement);
+      const detailBtn = playerElement.querySelector(".detailBtn");
+
+      detailBtn.addEventListener("click", async (e) => {
+        console.log("hello");
+        const player = e.target.dataset.id;
+        fetchSinglePlayer(player);
+      });
+      const removeBtn = playerElement.querySelector(".removeBtn");
+      removeBtn.addEventListener("click", async (e) => {
+        // removePlayer(e.target.id);
+        // console.log(`Removed ${e.target}`);
+      });
+    });
   } catch (err) {
     console.error("Uh oh, trouble rendering players!", err);
   }
@@ -142,10 +159,10 @@ const renderNewPlayerForm = () => {
 };
 
 const init = async () => {
-  const players = await fetchAllPlayers();
+  let players = await fetchAllPlayers();
   renderAllPlayers(players);
-  fetchSinglePlayer(players[1].id);
-  addNewPlayer(players[1]);
+  // fetchSinglePlayer(players[1].id);
+  // addNewPlayer(players[1]);
 
   // renderNewPlayerForm();
 };
