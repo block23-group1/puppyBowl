@@ -116,8 +116,8 @@ const renderAllPlayers = (playerList) => {
 
       detailBtn.addEventListener("click", async (e) => {
         console.log("hello");
-        const player = e.target.dataset.id;
-        fetchSinglePlayer(player);
+        const playerId = e.target.dataset.id;
+        fetchSinglePlayer(playerId);
       });
       const removeBtn = playerElement.querySelector(".removeBtn");
       removeBtn.addEventListener("click", async (e) => {
