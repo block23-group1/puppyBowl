@@ -38,6 +38,18 @@ const fetchSinglePlayer = async (playerId) => {
 // adding new player object by using rest API Post
 const addNewPlayer = async (playerObj) => {
   try {
+    const response = await fetch(`${APIURL}/players`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: `${playerObj.name}`,
+        breed: `${playerObj.breed}`,
+      }),
+    });
+    const result = await response.json();
+    console.log("Add new player ", result);
   } catch (err) {
     console.error("Oops, something went wrong with adding that player!", err);
   }
@@ -46,6 +58,11 @@ const addNewPlayer = async (playerObj) => {
 // remove player with .remove()
 const removePlayer = async (playerId) => {
   try {
+    const response = await fetch(`${APIURL}/players/${playerId}`, {
+      method: "DELETE",
+    });
+    const result = await response.json();
+    console.log(`Deleted ${playerId} `, result);
   } catch (err) {
     console.error(
       `Whoops, trouble removing player #${playerId} from the roster!`,
@@ -74,6 +91,20 @@ const removePlayer = async (playerId) => {
  * @param playerList - an array of player objects
  * @returns the playerContainerHTML variable.
  */
+
+const detailBtn = document.getElementById("detailBtn");
+const removeBtn = document.getElementById("removeBtn");
+
+detailBtn.addEventListener("click", (e) => {
+  const player = fetchSinglePlayer(e.target.id);
+  console.log(`Got ${player}'s info...`);
+});
+
+removeBtn.addEventListener("click", (e) => {
+  removePlayer(e.target.id);
+  console.log(`Removed ${e.target}`);
+});
+
 const renderAllPlayers = (playerList) => {
   try {
     console.log(playerList);
@@ -88,6 +119,23 @@ const renderAllPlayers = (playerList) => {
  */
 const renderNewPlayerForm = () => {
   try {
+    const submit = document.createElement("input");
+    submit.value = "Add Player";
+    submit.addEventListener("click", e);
+    const form = `<form id="newPlayerEntry">
+    <div class="newPlayerEntry">
+    <label for="name">Enter player's name: </label>
+    <input type="text" name="name" id="name"> 
+    </div>
+    <div class="playerBreed">
+    <label for="breed">Enter player's breed: </label>
+    <input type="text" name="breed" id="breed">
+    <div>
+    </form>`;
+    const newForm = document.getElementById("new-player-form");
+    newForm.innerHTML = form;
+    const playerForm = document.getElementById("newPlayerEntry");
+    playerForm.appendChild(input);
   } catch (err) {
     console.error("Uh oh, trouble rendering the new player form!", err);
   }
@@ -97,6 +145,7 @@ const init = async () => {
   const players = await fetchAllPlayers();
   renderAllPlayers(players);
   fetchSinglePlayer(players[1].id);
+  addNewPlayer(players[1]);
 
   // renderNewPlayerForm();
 };
