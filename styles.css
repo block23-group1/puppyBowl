@@ -22,10 +22,11 @@ h1 {
 
 /* Add styles to the navigation bar */
 .navbar {
+  border-right: inset 3px #081d3130;
   position: fixed;
   top: 0;
   left: 0;
-  width: 200px;
+  width: 195px;
   height: 100vh; /* Set the height to full viewport height */
   overflow-y: auto; /* Enable vertical scrolling if needed */
   background-color: #23c8ec;
@@ -36,31 +37,6 @@ h1 {
   align-items:first baseline; /* Center align items horizontally */
   justify-content: flex-start; /* Align items to the top */
 }
-
-/*
-Set organization with "navbar" class by making p section within CSS
-file and not the HTML
-*/
-
-#titleofBio {
-  text-align: center;
-  text-transform: uppercase;
-  text-shadow: 4px 4px 8px #a26868;
-  font-weight: bolder;
-  line-height: 1.5;
-  font-size: 28px;
-
-}
-
-#navbarBio {
- text-align: normal;
- line-height: 1.3;
- word-spacing: 2;
- font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
- color: #f3ebe5;
-}
-
-
 
 .navbar ul {
   list-style: none;
@@ -83,7 +59,7 @@ form {
   flex-direction: column;
   max-width: 400px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 23.5px;
   border: none;
   border-radius: 20px;
   background: #f3ebe5;
