@@ -46,6 +46,8 @@ const addNewPlayer = async (playerObj) => {
       body: JSON.stringify({
         name: `${playerObj.name}`,
         breed: `${playerObj.breed}`,
+        age: `${playerObj.age}`,
+        position: `${playerObj.position}`,
       }),
     });
     const result = await response.json();
@@ -94,6 +96,7 @@ const removePlayer = async (playerId) => {
 
 const renderAllPlayers = (playerList) => {
   try {
+    playerContainer.innerHTML = "";
     playerList.forEach((player) => {
       const playerElement = document.createElement("div");
       playerElement.classList.add("result");
@@ -101,7 +104,6 @@ const renderAllPlayers = (playerList) => {
       // adding html elements, and buttons
       playerElement.innerHTML = `
                       <h2>${player.name}</h2>
-                      <p>${player.breed}</p>
                       <p>${player.status}</p>
                       <img src="${player.imageURL}" alt="">
                       <p>${player.cohortId}</p>
@@ -121,8 +123,8 @@ const renderAllPlayers = (playerList) => {
       });
       const removeBtn = playerElement.querySelector(".removeBtn");
       removeBtn.addEventListener("click", async (e) => {
-        // removePlayer(e.target.id);
-        // console.log(`Removed ${e.target}`);
+        const playerId = e.target.dataset.id;
+        removePlayer(playerId);
       });
     });
   } catch (err) {
@@ -136,23 +138,106 @@ const renderAllPlayers = (playerList) => {
  */
 const renderNewPlayerForm = () => {
   try {
-    const submit = document.createElement("input");
-    submit.value = "Add Player";
-    submit.addEventListener("click", e);
+    // const form = document.createElement("form");
+    // form.id = "newPlayerEntry";
+
+    // const nameDiv = document.createElement("div");
+    // nameDiv.className = "newPlayerEntry";
+    // const nameLabel = document.createElement("label");
+    // nameLabel.textContent = "Enter player's name: ";
+    // const nameInput = document.createElement("input");
+    // nameInput.type = "text";
+    // nameInput.name = "name";
+    // nameInput.id = "name";
+    // nameDiv.appendChild(nameLabel);
+    // nameDiv.appendChild(nameInput);
+
+    // const breedDiv = document.createElement("div");
+    // breedDiv.className = "playerBreed";
+    // const breedLabel = document.createElement("label");
+    // breedLabel.textContent = "Enter player's breed: ";
+    // const breedInput = document.createElement("input");
+    // breedInput.type = "text";
+    // breedInput.name = "breed";
+    // breedInput.id = "breed";
+    // breedDiv.appendChild(breedLabel);
+    // breedDiv.appendChild(breedInput);
+
+    // const ageDiv = document.createElement("div");
+    // ageDiv.className = "playerAge";
+    // const ageLabel = document.createElement("label");
+    // ageLabel.textContent = "Enter player's age: ";
+    // const ageInput = document.createElement("input");
+    // ageInput.type = "text";
+    // ageInput.name = "age";
+    // ageInput.id = "age";
+    // ageDiv.appendChild(ageLabel);
+    // ageDiv.appendChild(ageInput);
+
+    // const positionDiv = document.createElement("div");
+    // positionDiv.className = "playerPosition";
+    // const positionLabel = document.createElement("label");
+    // positionLabel.textContent = "Enter player's position: ";
+    // const positionInput = document.createElement("input");
+    // positionInput.type = "text";
+    // positionInput.name = "position";
+    // positionInput.id = "position";
+    // positionDiv.appendChild(positionLabel);
+    // positionDiv.appendChild(positionInput);
+
+    // const addButton = document.createElement("button");
+    // addButton.textContent = "Add Player";
+    // addButton.type = "submit"; // Set the button type to "submit"
+    // addButton.addEventListener("click", () => {
+    //   const addingPlayer = {
+    //     name: nameInput.value,
+    //     breed: breedInput.value,
+    //   };
+    //   addNewPlayer(addingPlayer);
+    // }); // Attach event listener to the button
+
+    // form.appendChild(nameDiv);
+    // form.appendChild(breedDiv);
+    // form.appendChild(ageDiv);
+    // form.appendChild(positionDiv);
+    // form.appendChild(addButton);
+
+    // const newForm = document.getElementById("new-player-form");
+    // newForm.innerHTML = ""; // Clear any existing content
+    // newForm.appendChild(form);
+
     const form = `<form id="newPlayerEntry">
     <div class="newPlayerEntry">
     <label for="name">Enter player's name: </label>
-    <input type="text" name="name" id="name"> 
+    <input type="text" name="name" id="name"/> 
     </div>
     <div class="playerBreed">
     <label for="breed">Enter player's breed: </label>
-    <input type="text" name="breed" id="breed">
+    <input type="text" name="breed" id="breed"/>
     <div>
+    <div class="playerAge">
+    <label for="age">Enter player's age: </label>
+    <input type="text" name="age" id="age"/>
+    <div>
+    <div class="playerPosition">
+    <label for="position">Enter player's position: </label>
+    <input type="text" name="position" id="position"/>
+    <div>
+    <input type="button" value="Add Player" id="submit"/>
     </form>`;
-    const newForm = document.getElementById("new-player-form");
-    newForm.innerHTML = form;
-    const playerForm = document.getElementById("newPlayerEntry");
-    playerForm.appendChild(input);
+    newPlayerFormContainer.innerHTML = form;
+    const submit = document.getElementById("submit");
+    submit.addEventListener("click", async () => {
+      const newPlayer = {
+        name: document.getElementById("name").value,
+        breed: document.getElementById("breed").value,
+        age: document.getElementById("age").value,
+        position: document.getElementById("position").value,
+      };
+
+      addNewPlayer(newPlayer);
+      console.log(newPlayer);
+    });
   } catch (err) {
     console.error("Uh oh, trouble rendering the new player form!", err);
   }
@@ -164,7 +249,7 @@ const init = async () => {
   // fetchSinglePlayer(players[1].id);
   // addNewPlayer(players[1]);
 
-  // renderNewPlayerForm();
+  renderNewPlayerForm();
 };
 
 init();
