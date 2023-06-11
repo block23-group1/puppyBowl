@@ -9,58 +9,85 @@ body {
   margin-left: 200px;
 }
 
-.container {
+#all-players-container {
   max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
+  margin-left: 300px;
+  padding: 0px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  background-color:rgb(219, 209, 196); 
+  border-radius: 20px; 
+  border: solid 2px #bd848e;
 }
 
-h1 {
+
+.result {
   text-align: center;
-  margin-bottom: 20px;
+  margin: 25px;
+  padding: 0px;
+  border-style: inset;padding: 2px 4px;
+  background-color: #f3ebe5;
+  
 }
 
-/* Add styles to the navigation bar */
+/* Adding styles to nav bar*/
 .navbar {
   border-right: inset 3px #081d3130;
   position: fixed;
   top: 0;
   left: 0;
-  width: 195px;
+  width: 200px;
   height: 100vh; /* Set the height to full viewport height */
   overflow-y: auto; /* Enable vertical scrolling if needed */
   background-color: #23c8ec;
   color: #ffefef;
   padding: 10px;
-  display: flex;
-  flex-direction: column; /* Set flex direction to column */
-  align-items:first baseline; /* Center align items horizontally */
-  justify-content: flex-start; /* Align items to the top */
 }
 
-.navbar ul {
-  list-style: none;
-  display: flex;
-  align-items: center;
-  margin: 0;
-  padding: 0;
+img {
+  max-width: 220px; 
+  max-height: 220px;
 }
 
-.navbar ul li {
-  margin-right: 20px;
+#navTitle {
+  text-align: center; 
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  text-transform: uppercase; 
+  text-shadow: 4px 4px 8px #a26868; font-weight: bolder; line-height: 1.5;
+  font-size: 29px;
 }
 
-.navbar ul li:last-child {
-  margin-right: 0;
+a.squiggle {
+  background: linear-gradient(to bottom, #0087ca 0%, #0087ca 100%);
+  background-position: 0 100%;
+  background-repeat: repeat-x;
+  background-size: 2px 2px;
+  color: inherit;
+  text-decoration: none;
 }
+
+a.squiggle:hover {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 4'%3E%3Cstyle type='text/css'%3E.squiggle{animation:shift .3s linear infinite;}@keyframes shift {from {transform:translateX(0);}to {transform:translateX(-15px);}}%3C/style%3E%3Cpath fill='none' stroke='%230087ca' stroke-width='2' class='squiggle' d='M0,3.5 c 5,0,5,-3,10,-3 s 5,3,10,3 c 5,0,5,-3,10,-3 s 5,3,10,3'/%3E%3C/svg%3E");
+  background-size: auto 4px;
+}
+
+#navBio {
+  margin-top: 25px;
+  text-align: normal;
+  font-size: 11.5px; 
+  line-height: 1.3; 
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: #f3ebe5;
+}
+
 
 form {
   display: flex;
   flex-direction: column;
   max-width: 400px;
   margin: 0 auto;
-  padding: 23.5px;
-  border: none;
+  padding: 20.5px;
+  border: solid 2px #bd848e;
   border-radius: 20px;
   background: #f3ebe5;
   color: #00253c;
@@ -78,75 +105,19 @@ form input[type="text"] {
   margin-bottom: 10px;
 }
 
-form input[type="submit"] {
-  background-color: #0080ff;
-  color: #fff;
-  border: none;
+form input[type="button"] {
+  background-color: #f3ebe5;
+  color: #1e1e1e;
   padding: 10px 20px;
   cursor: pointer;
-  border: none;
-}
-
-button {
-  background-color: inherit;
+  width: 385px;
   border-width: thin;
   border-radius: 5px;
   transition: transform 0.3s ease;
 }
 
-button:hover {
+form input[type="button"]:hover {
   transform: scale(1.05);
 }
 
-.new-player-form {
-  background-color: #74949c;
-  padding: 20px;
-  border-radius: 8px; /* Soft borders */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  width: calc(33.33% - 20px); /* Adjust the width as needed */
-  margin-bottom: 20px;
-}
 
-.player-card {
-  background-color: #f3ebe5;
-  border-radius: 8px;
-  padding: 16px;
-  margin: 8px;
-  box-sizing: border-box;
-  width: 700px; /* Adjust the width to your preference */
-}
-
-.player-card img {
-  max-width: 100%;
-  max-height: 150px; /* Adjust the height to your preference */
-  object-fit: contain; /* Adjust the object-fit property to control how the image is displayed */
-}
-.all-players-container {
-  display: block;
-  width: 23%;
-  margin: 10px;
-  padding: 20px;
-  background-color: #74949c;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  margin: auto;
-}
-
-.player-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-}
-
-/* Media query for responsive layout */
-@media (max-width: 768px) {
-  .player-card {
-    width: 48%;
-  }
-}
-
-@media (max-width: 480px) {
-  .player-card {
-    width: 100%;
-  }
-}

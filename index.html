@@ -3,36 +3,32 @@
 
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- import CSS -->
   <link rel="stylesheet" href="styles.css">
-  <title>Puppy Bowl Participants</title>
+  <title >Puppy Bowl Pup-a-tiers</title>
 </head>
 
 <body>
-  <nav class="navbar">
-    <div><img src="puppy-bowl-high-resolution-logo-white-on-transparent-background.png" alt="Puppy logo"
-        style="max-width: 220px; max-height: 220px;"></div>
-        
-        <p style=" text-align: center; font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-        text-transform: uppercase; text-shadow: 4px 4px 8px #a26868; font-weight: bolder; line-height: 1.5;
-        font-size: 28px; "> Welcome to the <br> Puppy Bowl Mini-Game</p>
+    <nav class="navbar">
+        <div><img src="puppy-bowl-high-resolution-logo-white-on-transparent-background.png" alt="Puppy logo">
+        <p id="navTitle"><a class="squiggle"href="#">Welcome to the <br> Puppy Bowl Mini-Game</a></p>
+        <p id="navBio">Here you will be able to register your puppies into our competitive roster by entering your puppies information into the form.</p>
+    </div>
+</nav>
+  
 
-        <p style=" text-align: normal; line-height: 1.3; font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-          color: #f3ebe5;"> Here you will be able to register your puppies into our competitive roster by entering your puppies
-      details into the form. </p>  
-      </nav>
-
+    <!-- form to add new players -->
   <div class="content">
-    <div id="new-player-form">
-      <!-- New Player Form will be dynamically rendered here -->
-    </div>
-    <div style="display: flex; flex-wrap: wrap; justify-content: center;  align-items: center;">
-      <div id="all-players-container" class="player-grid player-card">
-        <!-- All current Puppy Bowl participants will be dynamically rendered here -->
-      </div>
-    </div>
-  </div>
+    <div id="new-player-form"></div></div>
+    <!-- New Player Form will be dynamically rendered here -->
 
+    <!-- All current Puppy Bowl participants will be dynamically rendered here -->
+  <div class="player-card">
+    <div id="all-players-container"></div></div>
+ 
+    <!-- import JavaScript -->
   <script src="script.js"></script>
 </body>
 
