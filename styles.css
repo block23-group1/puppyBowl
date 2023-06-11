@@ -1,5 +1,164 @@
-* {
-  padding: 0;
+body {
+  font-family: Arial, sans-serif;
+  background-color: #de96a2; /* Soft blue background color */
   margin: 0;
+  padding: 0;
+}
+
+.content {
+  margin-left: 200px;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Add styles to the navigation bar */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 100vh; /* Set the height to full viewport height */
+  overflow-y: auto; /* Enable vertical scrolling if needed */
+  background-color: #23c8ec;
+  color: #ffefef;
+  padding: 10px;
+  display: flex;
+  flex-direction: column; /* Set flex direction to column */
+  align-items:first baseline; /* Center align items horizontally */
+  justify-content: flex-start; /* Align items to the top */
+}
+
+/*
+Set organization with "navbar" class by making p section within CSS
+file and not the HTML
+*/
+
+ #navbarBio {
+ 
+}
+
+#titleofBio {
+  text-align: center;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar ul li {
+  margin-right: 20px;
+}
+
+.navbar ul li:last-child {
+  margin-right: 0;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: none;
+  border-radius: 20px;
+  background: #f3ebe5;
+  color: #00253c;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+form label {
+  margin-bottom: 10px;
+  border: none;
+}
+
+form input[type="text"] {
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+form input[type="submit"] {
+  background-color: #0080ff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border: none;
+}
+
+button {
+  background-color: inherit;
+  border-width: thin;
+  border-radius: 5px;
+  transition: transform 0.3s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+.new-player-form {
+  background-color: #74949c;
+  padding: 20px;
+  border-radius: 8px; /* Soft borders */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: calc(33.33% - 20px); /* Adjust the width as needed */
+  margin-bottom: 20px;
+}
+
+.player-card {
+  background-color: #f3ebe5;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 8px;
   box-sizing: border-box;
+  width: 700px; /* Adjust the width to your preference */
+}
+
+.player-card img {
+  max-width: 100%;
+  max-height: 150px; /* Adjust the height to your preference */
+  object-fit: contain; /* Adjust the object-fit property to control how the image is displayed */
+}
+.all-players-container {
+  display: block;
+  width: 23%;
+  margin: 10px;
+  padding: 20px;
+  background-color: #74949c;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin: auto;
+}
+
+.player-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+/* Media query for responsive layout */
+@media (max-width: 768px) {
+  .player-card {
+    width: 48%;
+  }
+}
+
+@media (max-width: 480px) {
+  .player-card {
+    width: 100%;
+  }
 }
