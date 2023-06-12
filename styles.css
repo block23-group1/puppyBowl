@@ -58,7 +58,7 @@ img {
 }
 
 a.squiggle {
-  background: linear-gradient(to bottom, #0087ca 0%, #0087ca 100%);
+  background: linear-gradient(to bottom, #f1adec 0%, #fb6799 100%);
   background-position: 0 100%;
   background-repeat: repeat-x;
   background-size: 2px 2px;
@@ -81,11 +81,11 @@ a.squiggle:hover {
 }
 
 
+
 form {
   display: flex;
   flex-direction: column;
   max-width: 400px;
-  margin: 0 auto;
   padding: 20.5px;
   border: solid 2px #bd848e;
   border-radius: 20px;
@@ -118,6 +118,6 @@ form input[type="button"] {
 
 form input[type="button"]:hover {
   transform: scale(1.05);
-}
+} 
 
 
