@@ -6,7 +6,8 @@ body {
 }
 
 .content {
-  margin-left: 200px;
+  margin-left: 450px;
+
 }
 
 #all-players-container {
@@ -85,6 +86,7 @@ a.squiggle:hover {
 form {
   display: flex;
   flex-direction: column;
+
   max-width: 400px;
   padding: 20.5px;
   border: solid 2px #bd848e;
@@ -101,16 +103,27 @@ form label {
 }
 
 form input[type="text"] {
-  padding: 10px;
-  margin-bottom: 10px;
+  padding: 7px 25px;
+  margin-left: 10px;
+}
+
+form input[name="name"] {
+  margin-left: 25px;
+}
+
+form input[name="breed"] {
+  margin-left: 23.5px;
+}
+
+form input[name="position"] {
+  margin-bottom: 18.5px;
 }
 
 form input[type="button"] {
-  background-color: #f3ebe5;
   color: #1e1e1e;
   padding: 10px 20px;
   cursor: pointer;
-  width: 385px;
+  width: 375px;
   border-width: thin;
   border-radius: 5px;
   transition: transform 0.3s ease;
@@ -120,4 +133,11 @@ form input[type="button"]:hover {
   transform: scale(1.05);
 } 
 
+.detailBtn:hover {
+  transform: scale(1.05);
+}
 
+
+.removeBtn:hover {
+  transform: scale(1.05);
+}
