@@ -1,21 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script defer src="script.js"></script>
+    <!-- import CSS -->
   <link rel="stylesheet" href="styles.css">
-  <title>PuppyBowl</title>
+  <title >Puppy Bowl Pup-a-tiers</title>
 </head>
+
 <body>
-  <!-- form to add new players -->
-  <div id="new-player-form"></div>
+    <nav class="navbar">
+        <div><img src="puppy-bowl-high-resolution-logo-white-on-transparent-background.png" alt="Puppy logo">
+        <p id="navTitle"><a class="squiggle"href="#">Welcome to the <br> Puppy Bowl Mini-Game</a></p>
+        <p id="navBio">Here you will be able to register your puppies into our competitive roster. Please enter your puppies information through the form.</p>
+    </div>
+</nav>
+  
 
-  <!-- container for all players -->
-  <div id="all-players-container"></div>
+    <!-- form to add new players -->
+  <div class="content">
+    <div id="new-player-form"></div></div>
+    <!-- New Player Form will be dynamically rendered here -->
 
-  <!-- import JavaScript -->
-  <script src="./script.js"></script>
+    <!-- All current Puppy Bowl participants will be dynamically rendered here -->
+  <div class="player-card">
+    <div id="all-players-container"></div></div>
+ 
+    <!-- import JavaScript -->
+  <script src="script.js"></script>
 </body>
+
 </html>
