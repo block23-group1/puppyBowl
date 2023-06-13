@@ -1,3 +1,5 @@
+Puppies participants
+
 Requirements:
   - GitHub Project
       - Detailed planning tickets with task descriptions for each one
